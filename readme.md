@@ -1,4 +1,4 @@
-## Spring Boot ZK 8.5 To-do Example Project
+## Spring Boot and ZK Framework To-do Example Project
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)
 
 ### Pre-requirement
