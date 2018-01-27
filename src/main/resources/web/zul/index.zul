@@ -1,0 +1,50 @@
+<zk>
+    <style dynamic="true">
+        body {margin: 0; padding: 0;}        
+        .z-window-content {padding: 0px;}
+        .z-tabbox{border: 0px;}
+        .z-window-embedded-header { color:white; font-size:50px;}
+        .z-window-header {padding-top:0; padding-bottom:10px;}
+        .z-panelchildren{padding: 5px;}        
+    </style>
+    <window viewModel="@id('vm') @init('com.mkdika.springzk85todo.viewmodel.IndexVm')"
+            border="normal" width="100%" vflex="1" style="margin:auto;text-align:center;" >
+        <caption label="ZK To-do" iconSclass="z-icon-list-alt" style="font-size: 25px;"/>
+        <hbox id="upperbox" width="100%" align="end">           
+            <button label="New Task" height="40px"/>                              
+        </hbox>
+        <tabbox width="100%" sclass="nav_tabs">
+            <tabs id="tabs" >
+                <tab label="Active" style="font-size: 20px;"/>
+                <tab label="Complete" style="font-size: 20px;"/>                
+            </tabs>            
+            <tabpanels>
+                <tabpanel >                    
+                    <vlayout hflex="1" vflex="1" style="overflow: auto !important;" children="@load(vm.taskListModel)">                        
+                        <template name="children" var="item">                            
+                            <panel width="400px"  title="@load(item.id)"  
+                                   border="normal" collapsible="true">
+                                <panelchildren>
+                                    <vlayout >
+                                        <textbox rows="5" value="@bind(item.content)" 
+                                                 placeholder="Fill task content."
+                                                 width="100%"
+                                                 readonly="@bind(item.editable)"/>
+                                        <hbox width="100%">
+                                            <button label="EDIT" hflex="1" height="50px"/>
+                                            <button label="DONE" hflex="1" height="50px"/>
+                                        </hbox>                                
+                                    </vlayout>                                
+                                </panelchildren>
+                            </panel>
+                                                                                        
+                        </template>                                                                     
+                    </vlayout>                                                                                    
+                </tabpanel>
+                <tabpanel>  
+                    <label value="@load(vm.testing)" />              
+                </tabpanel>
+            </tabpanels>
+        </tabbox>                
+    </window>
+</zk>
